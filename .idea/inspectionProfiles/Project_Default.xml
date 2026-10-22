@@ -1,0 +1,103 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyInterpreterInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="false" level="WARNING" enabled_by_default="false">
+      <option name="ignoredPackages">
+        <list>
+          <option value="aiofiles" />
+          <option value="aiogram" />
+          <option value="aiohappyeyeballs" />
+          <option value="aiohttp" />
+          <option value="aiosignal" />
+          <option value="altgraph" />
+          <option value="annotated-types" />
+          <option value="asgiref" />
+          <option value="attrs" />
+          <option value="auto-py-to-exe" />
+          <option value="bottle" />
+          <option value="bottle-websocket" />
+          <option value="certifi" />
+          <option value="cffi" />
+          <option value="charset-normalizer" />
+          <option value="CurrencyConverter" />
+          <option value="diff-match-patch" />
+          <option value="distlib" />
+          <option value="Django" />
+          <option value="django-debug-toolbar" />
+          <option value="django-filter" />
+          <option value="django-import-export" />
+          <option value="djangorestframework" />
+          <option value="docker" />
+          <option value="docutils" />
+          <option value="drf-spectacular" />
+          <option value="Eel" />
+          <option value="filelock" />
+          <option value="flake8" />
+          <option value="flake8-docstrings" />
+          <option value="frozenlist" />
+          <option value="future" />
+          <option value="gevent" />
+          <option value="gevent-websocket" />
+          <option value="greenlet" />
+          <option value="gunicorn" />
+          <option value="idna" />
+          <option value="inflection" />
+          <option value="ipaddress" />
+          <option value="jsonschema" />
+          <option value="jsonschema-specifications" />
+          <option value="magic-filter" />
+          <option value="mccabe" />
+          <option value="MouseInfo" />
+          <option value="multidict" />
+          <option value="Nuitka" />
+          <option value="ordered-set" />
+          <option value="packaging" />
+          <option value="pefile" />
+          <option value="pillow" />
+          <option value="platformdirs" />
+          <option value="propcache" />
+          <option value="PyAutoGUI" />
+          <option value="pycodestyle" />
+          <option value="pycparser" />
+          <option value="pydantic" />
+          <option value="pydantic_core" />
+          <option value="pydocstyle" />
+          <option value="pyflakes" />
+          <option value="PyGetWindow" />
+          <option value="pyinstaller" />
+          <option value="pyinstaller-hooks-contrib" />
+          <option value="PyMsgBox" />
+          <option value="pyparsing" />
+          <option value="pyperclip" />
+          <option value="PyRect" />
+          <option value="PyScreeze" />
+          <option value="pyTelegramBotAPI" />
+          <option value="pytweening" />
+          <option value="pytz" />
+          <option value="pywin32" />
+          <option value="pywin32-ctypes" />
+          <option value="PyYAML" />
+          <option value="referencing" />
+          <option value="requests" />
+          <option value="rpds-py" />
+          <option value="sentry-sdk" />
+          <option value="setuptools" />
+          <option value="snowballstemmer" />
+          <option value="sqlparse" />
+          <option value="tablib" />
+          <option value="typing_extensions" />
+          <option value="tzdata" />
+          <option value="uritemplate" />
+          <option value="urllib3" />
+          <option value="virtualenv" />
+          <option value="whichcraft" />
+          <option value="yarl" />
+          <option value="zope.event" />
+          <option value="zope.interface" />
+          <option value="zstandard" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

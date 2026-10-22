@@ -1,22 +1,26 @@
-from fastapi import FastAPI, Depends, HTTPException
-from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy import select
-from sqlalchemy.orm import selectinload
+from contextlib import asynccontextmanager
 from typing import List
 
-from database import init_db, get_db
-from models import Recipe, Ingredient
-from schemas import RecipeCreate, RecipeListItem, RecipeDetail
+from fastapi import Depends, FastAPI, HTTPException
+from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.orm import selectinload
 
-app = FastAPI(title="Кулинарная книга API", version="1.0.0")
+from database import get_db, init_db
+from models import Ingredient, Recipe
+from schemas import RecipeCreate, RecipeDetail, RecipeListItem
 
 
-@app.on_event("startup")
-async def startup():
+@asynccontextmanager
+async def lifespan(app: FastAPI):
     await init_db()
+    yield
 
 
-@app.get('/recipes', response_model=List[RecipeListItem], tags=["Recipes"])
+app = FastAPI(title="Кулинарная книга API", version="1.0.0", lifespan=lifespan)
+
+
+@app.get("/recipes", response_model=List[RecipeListItem], tags=["Recipes"])
 async def get_recipes(db: AsyncSession = Depends(get_db)):
     """
     Список всех рецептов, отсортированных по популярности (views),
@@ -28,7 +32,7 @@ async def get_recipes(db: AsyncSession = Depends(get_db)):
     return result.scalars().all()
 
 
-@app.get('/recipes/{recipe_id}', response_model=RecipeDetail, tags=["Recipes"])
+@app.get("/recipes/{recipe_id}", response_model=RecipeDetail, tags=["Recipes"])
 async def get_recipe(recipe_id: int, db: AsyncSession = Depends(get_db)):
     """
     Детальная информация о рецепте. Увеличивает счётчик просмотров.
@@ -42,14 +46,14 @@ async def get_recipe(recipe_id: int, db: AsyncSession = Depends(get_db)):
     if recipe is None:
         raise HTTPException(status_code=404, detail="Recipe not found")
 
-    recipe.views += 1
+    recipe.views += 1  # type: ignore
     await db.commit()
     await db.refresh(recipe)
 
     return recipe
 
 
-@app.post('/recipes', response_model=RecipeDetail, status_code=201, tags=["Recipes"])
+@app.post("/recipes", response_model=RecipeDetail, status_code=201, tags=["Recipes"])
 async def create_recipe(recipe_data: RecipeCreate, db: AsyncSession = Depends(get_db)):
     """
     Создать новый рецепт с ингредиентами.
@@ -60,8 +64,7 @@ async def create_recipe(recipe_data: RecipeCreate, db: AsyncSession = Depends(ge
         description=recipe_data.description,
     )
     recipe.ingredients = [
-        Ingredient(name=i.name, quantity=i.quantity)
-        for i in recipe_data.ingredients
+        Ingredient(name=i.name, quantity=i.quantity) for i in recipe_data.ingredients
     ]
     db.add(recipe)
     await db.commit()

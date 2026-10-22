@@ -1,9 +1,10 @@
 fastapi
 uvicorn
-sqlalchemy
+sqlalchemy[asyncio]
 aiosqlite
 greenlet
 pytest
+pytest-asyncio
 httpx
 black
 isort
