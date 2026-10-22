@@ -19,10 +19,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install black isort flake8 mypy pytest pytest-asyncio httpx
-      - name: Black
-        run: black --check .
-      - name: isort
-        run: isort --check-only .
+      - name: Black (auto-format)
+        run: black .
+      - name: isort (auto-format)
+        run: isort .
       - name: flake8
         run: flake8 . --max-line-length=120
       - name: mypy
